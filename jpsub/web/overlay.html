@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>jpsub overlay</title>
+<link rel="stylesheet" href="/static/overlay.css">
+</head>
+<body data-position="bottom">
+<div id="popup" hidden></div>
+<div id="bar">
+  <div id="tools">
+    <span id="status"></span>
+    <button id="pause" type="button" title="Pause or resume listening">⏸</button>
+    <button id="furigana" type="button" title="Readings: always, on hover, off">ふ</button>
+    <button id="script" type="button" title="Readings in hiragana or romaji">あ</button>
+    <button id="smaller" type="button" title="Smaller text">A−</button>
+    <button id="larger" type="button" title="Larger text">A+</button>
+    <input id="opacity" type="range" min="0" max="100" step="5" title="Background opacity">
+    <button id="position" type="button" title="Move to top or bottom of the screen">⇅</button>
+    <button id="close" type="button" title="Close the overlay">✕</button>
+  </div>
+  <div id="lines" lang="ja"></div>
+</div>
+<script src="/static/common.js"></script>
+<script src="/static/overlay.js"></script>
+</body>
+</html>

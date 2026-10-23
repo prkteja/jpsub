@@ -1,0 +1,128 @@
+:root {
+  --opacity: 0.85;
+  --panel: rgba(16, 18, 22, var(--opacity));
+  --panel-solid: #1b1e24;
+  --border: rgba(255, 255, 255, 0.14);
+  --text: #f4f5f7;
+  --muted: #a3aab6;
+  --accent: #f2b45a;
+  --accent-bg: rgba(242, 180, 90, 0.22);
+  --good: #6fd39a;
+  --fs: 1.7rem;
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; background: transparent; overflow: hidden; }
+/* In an ordinary browser tab there is no video behind the page. */
+body.browser { background: #3a3f48; }
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  color: var(--text);
+  font: 14px/1.45 system-ui, "Noto Sans CJK JP", "Noto Sans JP", sans-serif;
+}
+body[data-position="top"] { justify-content: flex-start; }
+
+#bar {
+  max-width: 100%;
+  min-width: 260px;
+  background: var(--panel);
+  border-radius: 12px;
+  padding: 0 18px 10px;
+}
+#tools {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4px;
+  height: 24px;
+  opacity: 0;
+  transition: opacity 0.12s;
+}
+/* body.pointer is set from script: the web view's own :hover state is not
+   cleared when the pointer moves onto the click-through area. */
+body.pointer #tools, body.idle #tools { opacity: 1; }
+#status { margin-right: auto; color: var(--muted); font-size: 12px; }
+#tools button {
+  font: inherit;
+  font-size: 12px;
+  line-height: 1;
+  color: var(--muted);
+  background: none;
+  border: 0;
+  border-radius: 4px;
+  padding: 4px 6px;
+  cursor: pointer;
+}
+#tools button:hover { color: var(--text); background: rgba(255, 255, 255, 0.12); }
+#opacity { width: 64px; height: 12px; margin: 0 4px; accent-color: var(--muted); cursor: pointer; }
+
+#lines {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  /* A long unbroken phrase keeps its most recent rows visible. */
+  max-height: calc(var(--fs) * 2 * 4);
+  overflow: hidden;
+  text-align: center;
+  font-family: "Noto Sans CJK JP", "Noto Sans JP", system-ui, sans-serif;
+  font-size: var(--fs);
+  line-height: 2;
+}
+/* Keeps text and controls readable when the background is turned down. */
+#lines, #tools { text-shadow: 0 0 3px #000, 0 0 7px rgba(0, 0, 0, 0.9); }
+.line { flex-shrink: 0; }
+.line.old { color: var(--muted); }
+.line.partial { opacity: 0.75; }
+.line.note { font: 14px/2 system-ui, sans-serif; color: var(--muted); }
+
+.w { border-radius: 4px; cursor: pointer; padding: 0.06em 0; }
+body.pointer .w:hover { background: var(--accent-bg); }
+.w.selected { background: var(--accent-bg); color: var(--accent); }
+rt { font-size: 0.46em; color: #d3d7de; user-select: none; }
+.romaji { display: none; }
+body[data-script="romaji"] .has-romaji .kana { display: none; }
+body[data-script="romaji"] .has-romaji .romaji { display: inline; }
+body[data-script="romaji"] .w { margin: 0 0.12em; }
+body[data-furigana="off"] rt { display: none; }
+body[data-furigana="hover"] rt { visibility: hidden; }
+body[data-furigana="hover"].pointer .w:hover rt,
+body[data-furigana="hover"] .w.selected rt { visibility: visible; }
+
+#popup {
+  position: absolute;
+  width: 380px;
+  max-width: calc(100% - 8px);
+  overflow-y: auto;
+  background: var(--panel-solid);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 14px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.45);
+}
+.heard { color: var(--muted); margin: 0 0 4px; }
+.heard b { color: var(--text); font-weight: 600; }
+.parts { display: flex; flex-wrap: wrap; gap: 5px; margin: 6px 0 4px; }
+.parts button {
+  font: inherit;
+  font-size: 12px;
+  color: var(--text);
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  padding: 1px 7px;
+  cursor: pointer;
+}
+.parts button.active { border-color: var(--accent); color: var(--accent); }
+.entry { padding: 9px 0 2px; border-top: 1px solid var(--border); margin-top: 8px; }
+.entry-head { display: flex; align-items: baseline; gap: 9px; flex-wrap: wrap; }
+.headword { font-size: 1.45rem; line-height: 1.3; font-family: "Noto Sans CJK JP", "Noto Sans JP", sans-serif; }
+.reading { color: var(--accent); }
+.badge { font-size: 10px; color: var(--good); border: 1px solid currentColor; border-radius: 4px; padding: 0 4px; }
+.senses { margin: 5px 0 0; padding-left: 20px; }
+.senses li { margin-bottom: 3px; }
+.pos { display: block; color: var(--muted); font-size: 11px; }
+.note, .hint, .more-senses { color: var(--muted); font-size: 12px; }
+.hint { margin: 8px 0 0; }

@@ -1,0 +1,14 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Build output (./build.sh)
+build/
+dist/
+
+# Benchmark models and test audio (bench/download.sh)
+bench/models/
+bench/data/
+
+*.log

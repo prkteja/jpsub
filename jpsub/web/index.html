@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>jpsub</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header>
+  <div class="status"><span id="dot" class="dot"></span><span id="status">Connecting…</span></div>
+  <div class="controls">
+    <button id="pause" type="button" title="Space">Pause</button>
+    <label>Readings
+      <select id="script">
+        <option value="kana">Hiragana</option>
+        <option value="romaji">Romaji</option>
+      </select>
+    </label>
+    <label>Show
+      <select id="furigana">
+        <option value="on">Always</option>
+        <option value="hover">On hover</option>
+        <option value="off">Off</option>
+      </select>
+    </label>
+    <span class="group">
+      <button id="smaller" type="button" aria-label="Smaller text">A−</button>
+      <button id="larger" type="button" aria-label="Larger text">A+</button>
+    </span>
+    <button id="clear" type="button">Clear</button>
+  </div>
+</header>
+
+<main>
+  <section id="transcript" lang="ja">
+    <p id="empty" lang="en">Play something in Japanese and the subtitles will appear here.<br>Click any word to look it up.</p>
+    <div id="lines"></div>
+    <div id="partial" class="line partial"></div>
+  </section>
+  <button id="jump" type="button" hidden>↓ Back to live</button>
+
+  <aside id="panel">
+    <nav class="tabs">
+      <button id="tab-lookup" type="button" class="active">Lookup</button>
+      <button id="tab-saved" type="button">Saved <span id="saved-count"></span></button>
+    </nav>
+    <div id="lookup" class="pane">
+      <p class="hint">Click a word in the subtitles.</p>
+    </div>
+    <div id="saved" class="pane" hidden></div>
+    <p class="credit">Definitions from <a href="https://www.edrdg.org/wiki/index.php/JMdict-EDICT_Dictionary_Project" target="_blank" rel="noopener">JMdict</a>
+      by the <a href="https://www.edrdg.org/edrdg/licence.html" target="_blank" rel="noopener">EDRDG</a>, CC BY-SA 4.0</p>
+  </aside>
+</main>
+
+<script src="/static/common.js"></script>
+<script src="/static/app.js"></script>
+</body>
+</html>
