@@ -87,18 +87,12 @@ tab-separated file for Anki from the Saved tab. Space pauses and resumes.
 | `--setup` | Download the models and dictionary, then exit. |
 | `--yes` | Download without asking. |
 
-### Window placement on niri and other Wayland compositors
+### Window placement on Wayland compositors
 
 The floating window is a layer-shell surface with the namespace `jpsub` on
 the overlay layer. If your compositor draws shadows or blur behind overlay
-surfaces, exclude it. For niri:
+surfaces, exclude it.
 
-```kdl
-layer-rule {
-    match namespace="^jpsub$"
-    shadow { off }
-}
-```
 
 On desktops without layer-shell (GNOME, X11) it falls back to a borderless
 always-on-top window.
