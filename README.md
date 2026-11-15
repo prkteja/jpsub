@@ -16,6 +16,8 @@ machine: no account, no cloud service, no audio leaves the computer.
 - **Full page view** in the browser with scrollable history, and saved words
   you can export to Anki.
 
+  ![screenshot](assets/screenshot.png)
+
 ## Requirements
 
 - Linux on x86-64 with glibc 2.28 or newer (Ubuntu 20.04+, Debian 10+,
