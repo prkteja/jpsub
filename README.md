@@ -13,10 +13,10 @@ machine: no account, no cloud service, no audio leaves the computer.
   (られる, ない, た) can be looked up one by one.
 - **Floating subtitle window** that sits above fullscreen video, with a pop-up
   dictionary. Clicks outside the subtitles go to the video underneath.
+  ![floating](assets/screenshot.png)
 - **Full page view** in the browser with scrollable history, and saved words
   you can export to Anki.
-
-  ![screenshot](assets/screenshot.png)
+  ![browser](assets/browser.png)
 
 ## Requirements
 
